@@ -1,0 +1,100 @@
+:root {
+    --bg: #0a0a0a;
+    --card: #161616;
+    --text: #ffffff;
+    --accent: #007bff;
+    --nav: rgba(20, 20, 20, 0.8);
+    --glass: blur(15px);
+}
+
+/* THEMES */
+[data-theme="matcha"] { --bg: #121a14; --card: #1c261e; --accent: #82a67d; --text: #e0f2e5; }
+[data-theme="pink"] { --bg: #1a1015; --card: #26181f; --accent: #ff85b3; --text: #ffe0ed; }
+[data-theme="purple"] { --bg: #0f0c1a; --card: #1a162b; --accent: #a38cf4; --text: #e8e4ff; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+body { 
+    background-color: var(--bg); 
+    color: var(--text); 
+    transition: 0.3s; 
+    padding-bottom: 100px; 
+    min-height: 100vh;
+}
+
+/* NAVBAR */
+.navbar {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--bg);
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.search-bar { display: flex; gap: 10px; margin-top: 10px; }
+input, select {
+    background: var(--card); border: 1px solid rgba(255,255,255,0.1);
+    color: white; padding: 12px; border-radius: 10px; outline: none; flex: 1;
+}
+
+/* REPO INPUT (Sebab dlm screenshot kau dia memanjang sangat) */
+.repo-header { padding: 20px; text-align: center; }
+.repo-input-wrapper { 
+    display: flex; gap: 10px; max-width: 600px; margin: 0 auto; 
+}
+
+/* GRID SYSTEM (Ini yang betulkan Screenshot 99 kau) */
+.manga-grid, .market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px; padding: 20px;
+}
+
+/* MARKET GRID (Khusus untuk Extension) */
+.market-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* EXTENSION CARD (Bagi nampak Pro) */
+.ext-card {
+    display: flex; align-items: center;
+    background: var(--card); padding: 15px;
+    border-radius: 15px; border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.2s;
+}
+
+.ext-icon { width: 50px; height: 50px; border-radius: 10px; margin-right: 15px; background: #333; }
+.ext-details { flex: 1; }
+.ext-name { font-weight: bold; font-size: 0.9rem; }
+.ext-ver { font-size: 0.7rem; color: #888; }
+
+.add-btn {
+    background: var(--accent); color: white; border: none;
+    padding: 8px 15px; border-radius: 20px; font-weight: bold; cursor: pointer;
+}
+
+/* FLOATING NAV (Macam Tachimanga Mobile) */
+.bottom-nav {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    width: 90%; max-width: 400px;
+    background: var(--nav); backdrop-filter: var(--glass); -webkit-backdrop-filter: var(--glass);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 30px; display: flex; justify-content: space-around; padding: 12px;
+    z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.nav-item { 
+    background: none; border: none; color: var(--text); opacity: 0.5;
+    display: flex; flex-direction: column; align-items: center; font-size: 0.7rem; gap: 4px;
+}
+.nav-item.active { opacity: 1; color: var(--accent); }
+
+/* THEME PICKER */
+.theme-picker { display: flex; gap: 15px; margin-top: 15px; }
+.dot { width: 40px; height: 40px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.1); cursor: pointer; }
+.dot.default { background: #007bff; }
+.dot.matcha { background: #82a67d; }
+.dot.pink { background: #ff85b3; }
+.dot.purple { background: #a38cf4; }
+
+.section-title { padding: 20px 20px 0; font-size: 1.2rem; }
+.hidden { display: none !important; }

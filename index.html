@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>ZHENYA - TachiWeb</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body data-theme="default">
+
+    <header class="navbar">
+        <div class="logo">ZHENYA</div>
+        <div class="search-bar">
+            <input type="text" id="manga-search" placeholder="Search manga..." oninput="handleSearch()">
+            <select id="source-selector" onchange="handleSearch()">
+                <option value="mangadex">MangaDex</option>
+                <option value="asura">Asura Scans</option>
+                <option value="manganato">Manganato</option>
+            </select>
+        </div>
+    </header>
+
+    <main id="main-content">
+        
+        <section id="library-page" class="page">
+            <div class="content-container">
+                <h2 class="section-title">Reading List <span class="accent-text">★</span></h2>
+                <div id="reading-list-grid" class="manga-grid">
+                    </div>
+                
+                <h2 class="section-title">Discover</h2>
+                <div id="manga-grid" class="manga-grid">
+                    </div>
+            </div>
+        </section>
+
+        <section id="browse-page" class="page hidden">
+            <div class="repo-header">
+                <h2 class="section-title">Extension Market</h2>
+                <div class="repo-input-wrapper">
+                    <input type="text" id="repo-url" value="https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json">
+                    <button onclick="fetchExternalRepo()" class="fetch-btn">Fetch Repo</button>
+                </div>
+            </div>
+            <div id="ext-market-list" class="market-grid"></div>
+        </section>
+
+        <section id="settings-page" class="page hidden">
+            <div class="content-container">
+                <h2 class="section-title">Settings</h2>
+                <div class="settings-card">
+                    <h3>Appearance</h3>
+                    <p>Choose your vibe:</p>
+                    <div class="theme-picker">
+                        <button class="dot default" onclick="setTheme('default')" title="Dark Blue"></button>
+                        <button class="dot matcha" onclick="setTheme('matcha')" title="Matcha Green"></button>
+                        <button class="dot pink" onclick="setTheme('pink')" title="Sakura Pink"></button>
+                        <button class="dot purple" onclick="setTheme('purple')" title="Midnight Purple"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="bottom-nav">
+        <button onclick="showPage('library-page')" class="nav-item">
+            <i data-lucide="library"></i><span>Library</span>
+        </button>
+        <button onclick="showPage('browse-page')" class="nav-item">
+            <i data-lucide="compass"></i><span>Browse</span>
+        </button>
+        <button onclick="showPage('settings-page')" class="nav-item">
+            <i data-lucide="settings"></i><span>Settings</span>
+        </button>
+    </nav>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="repo.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Init icons masa mula
+        lucide.createIcons();
+    </script>
+</body>
+</html>
